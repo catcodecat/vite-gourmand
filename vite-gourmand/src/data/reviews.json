@@ -1,0 +1,6 @@
+[
+  { "id": 1, "author": "Élodie P.", "rating": 5, "event": "Mariage", "validated": true, "content": "Présentation impeccable, équipe souriante et cuisine vraiment mémorable." },
+  { "id": 2, "author": "Marc D.", "rating": 5, "event": "Séminaire", "validated": true, "content": "Ponctualité, qualité des produits et gestion parfaite des régimes alimentaires." },
+  { "id": 3, "author": "Inès L.", "rating": 4, "event": "Anniversaire", "validated": true, "content": "Très belle expérience. Les invités ont adoré le buffet et les desserts." },
+  { "id": 4, "author": "Paul A.", "rating": 5, "event": "Cocktail", "validated": false, "content": "Service fluide, bouchées raffinées et très bon accompagnement avant l'événement." }
+]

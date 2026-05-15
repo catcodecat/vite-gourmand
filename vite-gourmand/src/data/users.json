@@ -1,0 +1,6 @@
+[
+  { "id": 1, "role": "client", "name": "Claire Martin", "email": "claire@demo.fr", "phone": "06 12 34 56 78", "active": true },
+  { "id": 2, "role": "employee", "name": "Lucas Bernard", "email": "lucas@demo.fr", "phone": "05 56 00 11 22", "active": true },
+  { "id": 3, "role": "admin", "name": "Nadia Moreau", "email": "admin@vitegourmand.fr", "phone": "05 56 88 42 10", "active": true },
+  { "id": 4, "role": "client", "name": "Thomas Rigal", "email": "thomas@demo.fr", "phone": "06 77 21 42 19", "active": false }
+]

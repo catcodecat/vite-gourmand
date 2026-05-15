@@ -1,0 +1,44 @@
+{
+  "name": "vite-gourmand",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "server": "node server/app.js",
+    "server:dev": "node --watch server/app.js",
+    "db:schema": "mysql -u root -p < server/database/schema.sql",
+    "db:seed": "mysql -u root -p vite_gourmand < server/database/seed.sql",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "vite": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "mysql2": "^3.12.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.0.0",
+    "framer-motion": "^12.0.0",
+    "react-icons": "^5.5.0",
+    "recharts": "^3.0.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17",
+    "postcss": "^8.5.6",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.0.0",
+    "@eslint/js": "^9.0.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.0",
+    "globals": "^16.0.0"
+  }
+}

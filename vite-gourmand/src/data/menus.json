@@ -1,0 +1,110 @@
+[
+  {
+    "id": "menu-signature-bordeaux",
+    "title": "Signature Bordelaise",
+    "theme": "Mariage",
+    "diet": "Classique",
+    "price": 48,
+    "minPeople": 20,
+    "stock": 140,
+    "description": "Un menu élégant inspiré du Sud-Ouest, pensé pour les réceptions raffinées et les grands moments de partage.",
+    "longDescription": "La Signature Bordelaise met en avant des produits locaux, des cuissons maîtrisées et un dressage haut de gamme. Idéal pour les mariages, anniversaires et soirées privées à Bordeaux et en Gironde.",
+    "conditions": "Commande 7 jours à l'avance. Service inclus à partir de 50 convives. Livraison possible dans Bordeaux Métropole.",
+    "allergens": ["Gluten", "Lait", "Sulfites"],
+    "dishes": ["Canapés au magret fumé", "Filet de volaille fermière sauce graves", "Gratin de légumes anciens", "Entremets chocolat noisette"],
+    "images": [
+      "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1543353071-10c8ba85a904?auto=format&fit=crop&w=1400&q=80"
+    ]
+  },
+  {
+    "id": "menu-vegetal-chic",
+    "title": "Végétal Chic",
+    "theme": "Entreprise",
+    "diet": "Végétarien",
+    "price": 34,
+    "minPeople": 10,
+    "stock": 90,
+    "description": "Une proposition végétarienne contemporaine, colorée et généreuse, adaptée aux événements professionnels.",
+    "longDescription": "Ce menu valorise les légumes de saison, les céréales complètes et les sauces maison. Il apporte une alternative équilibrée sans compromis sur la gourmandise.",
+    "conditions": "Commande 72h à l'avance. Option vegan disponible sur demande. Vaisselle compostable incluse.",
+    "allergens": ["Fruits à coque", "Sésame"],
+    "dishes": ["Houmous betterave et crackers", "Risotto crémeux aux champignons", "Légumes rôtis au zaatar", "Tartelette citron basilic"],
+    "images": [
+      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1400&q=80"
+    ]
+  },
+  {
+    "id": "menu-cocktail-prestige",
+    "title": "Cocktail Prestige",
+    "theme": "Cocktail",
+    "diet": "Sans porc",
+    "price": 39,
+    "minPeople": 25,
+    "stock": 180,
+    "description": "Une sélection de pièces cocktail salées et sucrées pour un événement fluide, chic et convivial.",
+    "longDescription": "Pensé pour les vernissages, soirées d'entreprise et inaugurations, ce cocktail mise sur des bouchées élégantes, faciles à déguster debout.",
+    "conditions": "Minimum 25 personnes. Location de mange-debout possible. Personnel de service en supplément.",
+    "allergens": ["Gluten", "Oeufs", "Lait"],
+    "dishes": ["Mini tatins de légumes", "Brochettes gambas citron vert", "Navettes saumon aneth", "Macarons de saison"],
+    "images": [
+      "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1526234362653-3b75a0c07438?auto=format&fit=crop&w=1400&q=80"
+    ]
+  },
+  {
+    "id": "menu-famille-gourmande",
+    "title": "Famille Gourmande",
+    "theme": "Anniversaire",
+    "diet": "Classique",
+    "price": 29,
+    "minPeople": 8,
+    "stock": 75,
+    "description": "Un menu chaleureux, accessible et soigné pour les fêtes familiales et repas conviviaux.",
+    "longDescription": "La Famille Gourmande combine des recettes rassurantes, une présentation moderne et des portions généreuses pour satisfaire petits et grands.",
+    "conditions": "Retrait atelier possible. Livraison offerte dans Bordeaux à partir de 20 personnes.",
+    "allergens": ["Gluten", "Lait", "Oeufs"],
+    "dishes": ["Planche apéritive", "Parmentier de canard", "Salade croquante", "Moelleux chocolat"],
+    "images": [
+      "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=1400&q=80"
+    ]
+  },
+  {
+    "id": "menu-vegan-atlantic",
+    "title": "Vegan Atlantic",
+    "theme": "Séminaire",
+    "diet": "Vegan",
+    "price": 37,
+    "minPeople": 12,
+    "stock": 60,
+    "description": "Un menu vegan premium avec textures, fraîcheur et créativité pour une réception engagée.",
+    "longDescription": "Pensé pour les événements responsables, ce menu associe cuisine végétale, produits de saison et dressages nets.",
+    "conditions": "Commande 5 jours à l'avance. Tous les contenants sont réutilisables ou compostables.",
+    "allergens": ["Soja", "Fruits à coque"],
+    "dishes": ["Caviar d'aubergine fumé", "Curry doux de pois chiches", "Taboulé herbes fraîches", "Panna cotta coco mangue"],
+    "images": [
+      "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=1400&q=80"
+    ]
+  },
+  {
+    "id": "menu-brunch-elegant",
+    "title": "Brunch Élégant",
+    "theme": "Brunch",
+    "diet": "Halal",
+    "price": 32,
+    "minPeople": 15,
+    "stock": 100,
+    "description": "Un brunch traiteur premium pour lendemain de mariage, matinée d'équipe ou événement privé.",
+    "longDescription": "Viennoiseries, mets salés, fruits frais et boissons chaudes composent une formule généreuse, lumineuse et facile à installer.",
+    "conditions": "Livraison le matin entre 7h30 et 11h. Boissons chaudes incluses à partir de 25 personnes.",
+    "allergens": ["Gluten", "Lait", "Oeufs"],
+    "dishes": ["Mini viennoiseries", "Oeufs brouillés aux herbes", "Bagels saumon ou légumes", "Salade de fruits frais"],
+    "images": [
+      "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1493770348161-369560ae357d?auto=format&fit=crop&w=1400&q=80"
+    ]
+  }
+]

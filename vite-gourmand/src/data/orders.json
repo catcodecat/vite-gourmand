@@ -1,0 +1,38 @@
+[
+  {
+    "id": "VG-2026-001",
+    "customer": "Claire Martin",
+    "menuId": "menu-signature-bordeaux",
+    "menuTitle": "Signature Bordelaise",
+    "date": "2026-06-18",
+    "time": "19:30",
+    "people": 42,
+    "total": 1814.4,
+    "status": "confirmée",
+    "steps": ["demande reçue", "confirmée", "en préparation", "livrée"]
+  },
+  {
+    "id": "VG-2026-002",
+    "customer": "Thomas Rigal",
+    "menuId": "menu-cocktail-prestige",
+    "menuTitle": "Cocktail Prestige",
+    "date": "2026-06-25",
+    "time": "18:00",
+    "people": 75,
+    "total": 2659.5,
+    "status": "en préparation",
+    "steps": ["demande reçue", "confirmée", "en préparation", "livrée"]
+  },
+  {
+    "id": "VG-2026-003",
+    "customer": "Agence Nova",
+    "menuId": "menu-vegetal-chic",
+    "menuTitle": "Végétal Chic",
+    "date": "2026-07-02",
+    "time": "12:15",
+    "people": 28,
+    "total": 856.8,
+    "status": "demande reçue",
+    "steps": ["demande reçue", "confirmée", "en préparation", "livrée"]
+  }
+]
