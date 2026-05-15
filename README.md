@@ -4,16 +4,16 @@ Le projet frontend/backend principal se trouve dans le dossier `vite-gourmand/`.
 
 ## Liens examen
 
-- GitHub public: `A COMPLETER - URL du depot public`
-- Application frontend deployee: `A COMPLETER - URL du front`
-- API/backend deploye: `A COMPLETER - URL de l'API`
-- Outil de gestion de projet: `A COMPLETER - URL Trello, Jira, GitHub Projects ou autre`
+- GitHub public: https://github.com/catcodecat/vite-gourmand
+- Application frontend deployee: https://vite-gourmand-cat.vercel.app/
+- API/backend deploye: https://vite-gourmand-api-production.up.railway.app/api
+- Outil de gestion de projet: https://trello.com/invite/b/p6q2p8r3/ATAIT3XFF49v3Zo/projet-ecf-vite-gourmand
 
 ## Installation locale
 
 ```bash
-git clone URL_DU_DEPOT_PUBLIC
-cd NOM_DU_DEPOT/vite-gourmand
+git clone https://github.com/catcodecat/vite-gourmand
+cd vite-gourmand/vite-gourmand
 npm install
 cp .env.example .env
 ```
