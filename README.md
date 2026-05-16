@@ -5,7 +5,7 @@ Le projet frontend/backend principal se trouve dans le dossier `vite-gourmand/`.
 ## Liens examen
 
 - GitHub public: https://github.com/catcodecat/vite-gourmand
-- Application frontend deployee: https://vite-gourmand-cat.vercel.app/
+- Application frontend deployee: https://startling-bonbon-2b9ff8.netlify.app
 - API/backend deploye: https://vite-gourmand-api-production.up.railway.app/api
 - Outil de gestion de projet: https://trello.com/invite/b/p6q2p8r3/ATAIT3XFF49v3Zo/projet-ecf-vite-gourmand
 
