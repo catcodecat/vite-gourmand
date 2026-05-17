@@ -1,0 +1,163 @@
+CREATE DATABASE IF NOT EXISTS vite_gourmand CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE vite_gourmand;
+
+DROP TABLE IF EXISTS password_reset_tokens;
+DROP TABLE IF EXISTS contact_messages;
+DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS order_status_history;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS menu_dishes;
+DROP TABLE IF EXISTS dish_allergens;
+DROP TABLE IF EXISTS allergens;
+DROP TABLE IF EXISTS dishes;
+DROP TABLE IF EXISTS menu_images;
+DROP TABLE IF EXISTS menus;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS opening_hours;
+
+CREATE TABLE roles (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  role_id INT NOT NULL,
+  name VARCHAR(120) NOT NULL,
+  email VARCHAR(180) NOT NULL UNIQUE,
+  phone VARCHAR(30),
+  password_hash VARCHAR(255) NOT NULL,
+  active BOOLEAN NOT NULL DEFAULT TRUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT fk_users_roles FOREIGN KEY (role_id) REFERENCES roles(id)
+);
+
+CREATE TABLE menus (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(120) NOT NULL UNIQUE,
+  title VARCHAR(160) NOT NULL,
+  description TEXT NOT NULL,
+  long_description TEXT,
+  theme VARCHAR(80) NOT NULL,
+  diet VARCHAR(80) NOT NULL,
+  stock INT NOT NULL DEFAULT 0,
+  conditions TEXT,
+  price DECIMAL(10,2) NOT NULL,
+  min_people INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE menu_images (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  menu_id INT NOT NULL,
+  url TEXT NOT NULL,
+  alt_text VARCHAR(180),
+  position INT DEFAULT 0,
+  CONSTRAINT fk_menu_images_menus FOREIGN KEY (menu_id) REFERENCES menus(id) ON DELETE CASCADE
+);
+
+CREATE TABLE dishes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(160) NOT NULL UNIQUE,
+  description TEXT
+);
+
+CREATE TABLE allergens (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE dish_allergens (
+  dish_id INT NOT NULL,
+  allergen_id INT NOT NULL,
+  PRIMARY KEY (dish_id, allergen_id),
+  CONSTRAINT fk_dish_allergens_dishes FOREIGN KEY (dish_id) REFERENCES dishes(id) ON DELETE CASCADE,
+  CONSTRAINT fk_dish_allergens_allergens FOREIGN KEY (allergen_id) REFERENCES allergens(id) ON DELETE CASCADE
+);
+
+CREATE TABLE menu_dishes (
+  menu_id INT NOT NULL,
+  dish_id INT NOT NULL,
+  PRIMARY KEY (menu_id, dish_id),
+  CONSTRAINT fk_menu_dishes_menus FOREIGN KEY (menu_id) REFERENCES menus(id) ON DELETE CASCADE,
+  CONSTRAINT fk_menu_dishes_dishes FOREIGN KEY (dish_id) REFERENCES dishes(id) ON DELETE CASCADE
+);
+
+CREATE TABLE orders (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  reference VARCHAR(40) NOT NULL UNIQUE,
+  user_id INT NULL,
+  menu_id INT NOT NULL,
+  customer_name VARCHAR(120) NOT NULL,
+  customer_email VARCHAR(180) NOT NULL,
+  delivery_address TEXT NOT NULL,
+  event_date DATE NOT NULL,
+  event_time TIME NOT NULL,
+  people INT NOT NULL,
+  subtotal DECIMAL(10,2) NOT NULL,
+  delivery_fee DECIMAL(10,2) NOT NULL DEFAULT 0,
+  discount DECIMAL(10,2) NOT NULL DEFAULT 0,
+  total DECIMAL(10,2) NOT NULL,
+  status VARCHAR(80) NOT NULL DEFAULT 'en attente',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT fk_orders_users FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL,
+  CONSTRAINT fk_orders_menus FOREIGN KEY (menu_id) REFERENCES menus(id)
+);
+
+CREATE TABLE order_status_history (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  order_id INT NOT NULL,
+  status VARCHAR(80) NOT NULL,
+  changed_by INT NULL,
+  changed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_status_orders FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+  CONSTRAINT fk_status_users FOREIGN KEY (changed_by) REFERENCES users(id) ON DELETE SET NULL
+);
+
+CREATE TABLE reviews (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NULL,
+  order_id INT NULL,
+  author VARCHAR(120) NOT NULL,
+  rating TINYINT NOT NULL,
+  event_type VARCHAR(80) NOT NULL,
+  content TEXT NOT NULL,
+  status VARCHAR(30) NOT NULL DEFAULT 'en attente',
+  moderated_by INT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_reviews_users FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL,
+  CONSTRAINT fk_reviews_orders FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE SET NULL,
+  CONSTRAINT fk_reviews_moderator FOREIGN KEY (moderated_by) REFERENCES users(id) ON DELETE SET NULL,
+  CONSTRAINT chk_review_rating CHECK (rating BETWEEN 1 AND 5)
+);
+
+CREATE TABLE contact_messages (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(160) NOT NULL,
+  email VARCHAR(180) NOT NULL,
+  message TEXT NOT NULL,
+  handled BOOLEAN NOT NULL DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE opening_hours (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  day_name VARCHAR(20) NOT NULL,
+  open_time TIME NULL,
+  close_time TIME NULL,
+  closed BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+CREATE TABLE password_reset_tokens (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  token VARCHAR(120) NOT NULL UNIQUE,
+  expires_at DATETIME NOT NULL,
+  used_at DATETIME NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_reset_users FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);

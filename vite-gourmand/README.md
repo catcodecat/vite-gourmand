@@ -1,124 +1,236 @@
 # Vite & Gourmand
 
-Application React + API Node/Express pour un projet ECF Studi TP Developpeur Web et Web Mobile.
+## Presentation du projet
 
-Le front React consomme une API Express connectee a MySQL pour les donnees metier et a MongoDB pour les donnees analytics.
+Vite & Gourmand est une application web de traiteur fictif developpee dans le cadre d'un rendu ECF Studi pour le titre Developpeur Web et Web Mobile.
 
-## Liens examen
+L'application permet a un visiteur de consulter des menus, de creer un compte, de passer une commande et de laisser un avis. Elle propose aussi des espaces dedies aux utilisateurs connectes, aux employes et a l'administrateur.
 
-- GitHub public: `A COMPLETER - URL du depot public`
-- Application frontend deployee: `A COMPLETER - URL du front`
-- API/backend deploye: `A COMPLETER - URL de l'API`
-- Outil de gestion de projet: `A COMPLETER - URL Trello, Jira, GitHub Projects ou autre`
+Le projet est compose :
 
-## Stack technique
+- d'un front-end React genere avec Vite ;
+- d'une API back-end Node.js / Express ;
+- d'une base SQL MySQL pour les donnees metier ;
+- d'une base NoSQL MongoDB pour les donnees analytics ;
+- d'un build front-end dans le dossier `dist`, prevu pour un deploiement Netlify.
 
-- Frontend: React, Vite, React Router, Tailwind CSS, Zustand, Recharts
-- Backend: Node.js, Express.js, JWT, bcrypt, dotenv
-- Base SQL: MySQL avec `mysql2`
-- Base NoSQL: MongoDB avec `mongoose`
+## Contexte ECF Studi
+
+Ce projet sert de support a un dossier ECF Studi. Il doit montrer la capacite a concevoir, developper, documenter et deployer une application web complete.
+
+Les objectifs principaux sont :
+
+- presenter une application fonctionnelle avec plusieurs roles ;
+- documenter l'installation locale et le deploiement ;
+- fournir une base SQL exploitable ;
+- utiliser une base NoSQL pour un besoin complementaire ;
+- securiser les acces sensibles ;
+- organiser le projet avec un workflow Git clair ;
+- preparer les livrables attendus pour la soutenance.
+
+## Liens du projet
+
+| Element | Lien |
+| --- | --- |
+| Depot GitHub public | <https://github.com/catcodecat/vite-gourmand> |
+| Application front-end Netlify | <https://startling-bonbon-2b9ff8.netlify.app> |
+| API back-end deployee | Non deployee separement pour le moment |
+| Outil de gestion de projet Notion | <https://www.notion.so/362b64d300a6801f9677c455fa92c918?v=8434226078014d1e9793c54f3c3a146a&source=copy_link> |
+
+## Stack technique detectee
+
+### Front-end
+
+- React 19.
+- Vite 7.
+- React Router DOM 7.
+- Tailwind CSS 3.
+- Zustand.
+- Framer Motion.
+- React Icons.
+- Recharts.
+- Fetch natif pour les appels API.
+
+### Back-end
+
+- Node.js.
+- Express.js.
+- CORS.
+- dotenv.
+- JSON Web Token avec `jsonwebtoken`.
+- Hash des mots de passe avec `bcrypt`.
+- MySQL avec `mysql2/promise`.
+- MongoDB avec `mongoose`.
+
+### Qualite et outillage
+
+- ESLint.
+- npm.
+- Build Vite.
+- Deploiement front-end prevu sur Netlify.
+
+## Structure du projet
+
+```text
+vite-gourmand/
++-- dist/                         Build front-end pour Netlify
++-- docs/                         Documentation ECF et projet
++-- server/                       API Express
+|   +-- config/                   Connexions MySQL et MongoDB
+|   +-- controllers/              Logique des routes API
+|   +-- database/                 Scripts SQL
+|   +-- middleware/               Authentification, roles, erreurs
+|   +-- models/                   Modeles Mongoose
+|   +-- routes/                   Routes Express
+|   +-- services/                 Services metier
+|   +-- utils/                    Fonctions utilitaires
++-- src/                          Application React
+|   +-- components/               Composants UI reutilisables
+|   +-- context/                  Store Zustand
+|   +-- data/                     Donnees locales de secours
+|   +-- hooks/                    Hooks React
+|   +-- layouts/                  Layout principal
+|   +-- pages/                    Pages de l'application
+|   +-- services/                 Appels API
+|   +-- utils/                    Formatage et helpers
++-- API_DOCUMENTATION.md          Documentation des routes API
++-- README.md                     Documentation principale
++-- package.json                  Scripts et dependances
+```
 
 ## Prerequis
 
-- Node.js 20 ou version LTS recente
-- npm
-- MySQL Server
-- MongoDB Community Server
-- Git
+- Node.js 20 ou version LTS recente.
+- npm.
+- Git.
+- MySQL Server.
+- MongoDB Community Server.
 
 ## Installation locale
 
-1. Cloner le depot public:
+1. Cloner le depot public :
 
 ```bash
-git clone URL_DU_DEPOT_PUBLIC
+git clone https://github.com/catcodecat/vite-gourmand.git
 cd vite-gourmand
 ```
 
-2. Installer les dependances:
+2. Installer les dependances :
 
 ```bash
 npm install
 ```
 
-3. Creer le fichier d'environnement:
+3. Creer le fichier `.env` a partir du modele :
 
 ```bash
 cp .env.example .env
 ```
 
-Sous PowerShell:
+Sous PowerShell :
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-4. Adapter les variables dans `.env` si necessaire.
+4. Adapter les variables d'environnement selon la configuration locale.
 
-Exemple local:
-
-```env
-PORT=5000
-CLIENT_URL=http://localhost:5173
-VITE_API_URL=http://localhost:5000/api
-JWT_SECRET=change_me_for_local_dev
-JWT_EXPIRES_IN=2h
-MYSQL_HOST=localhost
-MYSQL_PORT=3306
-MYSQL_USER=root
-MYSQL_PASSWORD=
-MYSQL_DATABASE=vite_gourmand
-MONGO_URI=mongodb://127.0.0.1:27017/vite_gourmand
-ADMIN_EMAIL=admin@vitegourmand.fr
-ADMIN_PASSWORD=Admin123!
-```
-
-## Creation de la base de donnees
-
-Les fichiers SQL explicites sont dans `server/database/`:
-
-- `schema.sql`: creation de la base MySQL et de toutes les tables.
-- `seed.sql`: integration des donnees de demonstration.
-
-Importer la structure puis les donnees:
+5. Creer la base SQL MySQL :
 
 ```bash
 npm run db:schema
 npm run db:seed
 ```
 
-Commandes equivalentes:
+Commandes equivalentes :
 
 ```bash
 mysql -u root -p < server/database/schema.sql
 mysql -u root -p vite_gourmand < server/database/seed.sql
 ```
 
-MongoDB doit etre lance localement avant le backend. L'API cree les collections `statistics`, `revenue` et `analytics` lors des appels analytics.
+6. Verifier que MongoDB est lance avant de demarrer le back-end.
 
-## Lancement local
+## Variables d'environnement
 
-Terminal 1, lancer l'API:
+Exemple de configuration locale :
 
-```bash
-npm run server:dev
+```env
+PORT=5000
+CLIENT_URL=http://localhost:5173
+VITE_API_URL=http://localhost:5000/api
+
+JWT_SECRET=change_me_for_local_dev
+JWT_EXPIRES_IN=2h
+
+MYSQL_HOST=localhost
+MYSQL_PORT=3306
+MYSQL_USER=root
+MYSQL_PASSWORD=
+MYSQL_DATABASE=vite_gourmand
+
+MONGO_URI=mongodb://127.0.0.1:27017/vite_gourmand
+
+ADMIN_EMAIL=admin@vitegourmand.fr
+ADMIN_PASSWORD=Admin123!
 ```
 
-Terminal 2, lancer le frontend:
+Important : le fichier `.env` ne doit pas etre versionne. Le fichier `.env.example` sert uniquement de modele sans secret reel de production.
+
+## Lancement du front-end
 
 ```bash
 npm run dev
 ```
 
-URLs locales:
+URL locale par defaut :
 
-- Frontend: `http://localhost:5173`
-- API: `http://localhost:5000/api`
-- Healthcheck API: `http://localhost:5000/api/health`
+```text
+http://localhost:5173
+```
 
-## Comptes de demonstration
+## Lancement du back-end
 
-Ces comptes sont inseres par `server/database/seed.sql`. Le mot de passe est identique pour les trois comptes.
+Le back-end se trouve dans :
+
+```text
+server
+```
+
+Commande de lancement en mode developpement :
+
+```bash
+npm run server:dev
+```
+
+URL locale par defaut :
+
+```text
+http://localhost:5000/api
+```
+
+Healthcheck :
+
+```text
+http://localhost:5000/api/health
+```
+
+## Scripts npm
+
+```bash
+npm run dev        # Lance le front-end Vite
+npm run server     # Lance l'API Express
+npm run server:dev # Lance l'API Express en mode watch
+npm run db:schema  # Cree la base MySQL et les tables
+npm run db:seed    # Insere les donnees de demonstration
+npm run build      # Genere le build front-end
+npm run preview    # Sert le build front-end localement
+npm run lint       # Analyse le code avec ESLint
+```
+
+## Comptes de test
+
+Ces comptes sont prevus dans `server/database/seed.sql`. Le mot de passe est identique pour les trois comptes.
 
 | Role | Email | Mot de passe |
 | --- | --- | --- |
@@ -126,89 +238,127 @@ Ces comptes sont inseres par `server/database/seed.sql`. Le mot de passe est ide
 | Employe | `lucas@demo.fr` | `Admin123!` |
 | Utilisateur | `claire@demo.fr` | `Admin123!` |
 
-Aucun administrateur ne peut etre cree depuis le frontend.
+Aucun administrateur ne peut etre cree depuis le front-end.
 
-## Scripts npm
+## Fonctionnalites principales
 
-```bash
-npm run dev        # Lance le frontend Vite
-npm run server     # Lance l'API Express
-npm run server:dev # Lance l'API Express en mode watch
-npm run db:schema  # Cree la base MySQL et les tables
-npm run db:seed    # Insere les donnees de demonstration
-npm run build      # Genere le build frontend
-npm run preview    # Sert le build frontend en local
-npm run lint       # Analyse le code avec ESLint
-```
+- Consultation des menus.
+- Detail d'un menu.
+- Filtres de recherche.
+- Inscription et connexion.
+- Commande en ligne.
+- Tableau de bord utilisateur.
+- Tableau de bord employe.
+- Tableau de bord administrateur.
+- Gestion des commandes.
+- Moderation des avis.
+- Gestion des utilisateurs et employes.
+- Formulaire de contact.
+- Pages mentions legales et CGV.
+- Analytics admin avec donnees MongoDB.
 
-## Workflow Git attendu
+## Bases de donnees
 
-Le projet doit respecter le workflow suivant pour l'examen:
+### Base SQL
 
-1. `main` contient uniquement une version stable et testee.
+La base SQL est une base MySQL nommee `vite_gourmand`.
+
+Scripts disponibles :
+
+- `server/database/schema.sql` : creation de la base et des tables.
+- `server/database/seed.sql` : insertion des donnees de demonstration.
+
+Tables principales detectees :
+
+- `roles`
+- `users`
+- `menus`
+- `dishes`
+- `allergens`
+- `orders`
+- `order_status_history`
+- `reviews`
+- `contact_messages`
+- `opening_hours`
+- `password_reset_tokens`
+
+### Base NoSQL
+
+La base NoSQL utilise MongoDB avec Mongoose.
+
+Collections detectees :
+
+- `statistics`
+- `revenue`
+- `analytics`
+
+Ces collections sont utilisees pour les donnees analytics de l'espace administrateur.
+
+## Securite
+
+Les mecanismes de securite detectes sont :
+
+- hash des mots de passe avec `bcrypt` ;
+- authentification par JWT ;
+- routes protegees par middleware d'authentification ;
+- verification des roles pour les routes employe et administrateur ;
+- variables sensibles stockees dans `.env` ;
+- modele `.env.example` sans secret de production ;
+- configuration CORS avec `CLIENT_URL` ;
+- validation de donnees cote back-end via des utilitaires.
+
+Points a finaliser pour le dossier ECF :
+
+- documenter les donnees personnelles manipulees ;
+- completer la partie RGPD ;
+- verifier les secrets de production ;
+- confirmer l'URL front autorisee par CORS en production.
+
+## Informations de deploiement
+
+Le front-end est deploye sur Netlify.
+
+Parametres front-end :
+
+- plateforme : Netlify ;
+- lien du site : <https://startling-bonbon-2b9ff8.netlify.app> ;
+- dossier de publication : `dist` ;
+- dossier de build : `dist` ;
+- commande de build probable : `npm run build`.
+
+Netlify sert le front-end statique. L'API Express situee dans `server/` doit etre hebergee separement si elle doit etre utilisee en production.
+
+La variable `VITE_API_URL` doit pointer vers l'URL publique de l'API de production.
+
+La documentation detaillee se trouve dans `docs/deploiement.md`.
+
+## Workflow Git recommande
+
+Pour le rendu ECF, le workflow attendu est :
+
+1. `main` contient une version stable.
 2. `develop` contient l'integration des fonctionnalites validees.
-3. Chaque fonctionnalite part de `develop` dans une branche `feature/nom-fonctionnalite`.
-4. Une fois testee, chaque branche `feature/*` est mergee dans `develop`.
-5. Une fois `develop` testee globalement, `develop` est mergee dans `main`.
-6. Le depot GitHub final doit etre public.
+3. Les fonctionnalites sont developpees dans des branches `feature/nom-fonctionnalite`.
+4. Les branches `feature/*` sont fusionnees dans `develop`.
+5. `develop` est fusionnee dans `main` avant livraison finale.
 
-Commandes type:
+## Documentation complementaire
 
-```bash
-git switch main
-git pull
-git switch -c develop
-git push -u origin develop
+- `API_DOCUMENTATION.md` : routes de l'API.
+- `docs/00-analyse-projet.md` : analyse initiale du projet.
+- `docs/deploiement.md` : guide de deploiement.
+- `docs/checklist-finale-ecf.md` : checklist finale des livrables ECF.
 
-git switch develop
-git switch -c feature/authentification
-# developpement + tests
-git add .
-git commit -m "feat: add authentication"
-git switch develop
-git merge feature/authentification
+## Auteur
 
-npm run lint
-npm run build
-
-git switch main
-git merge develop
-git push origin main develop
-```
-
-## Documentation API
-
-Voir `API_DOCUMENTATION.md`.
-
-## Emails simules
-
-Les emails ne sont pas envoyes. Chaque action genere un fichier texte local dans:
+Projet realise par :
 
 ```text
-server/logs/emails/
+Larisa Faessel
 ```
 
-Ce dossier est ignore par Git.
+Formation :
 
-## Securite et configuration
-
-- Les mots de passe sont hashes avec bcrypt.
-- L'authentification utilise JWT.
-- Les routes sensibles utilisent des middlewares de roles.
-- Les variables sensibles doivent rester dans `.env`.
-- `.env` est ignore par Git.
-- `.env.example` documente les variables attendues sans secret reel de production.
-- Le CORS est configure avec `CLIENT_URL`.
-
-## Checklist avant soutenance
-
-- Verifier que le depot GitHub est public.
-- Renseigner les quatre liens de la section "Liens examen".
-- Verifier que `.env` n'est pas versionne.
-- Importer `schema.sql`, puis `seed.sql`.
-- Lancer MySQL et MongoDB.
-- Lancer `npm run server:dev`.
-- Lancer `npm run dev`.
-- Tester `http://localhost:5000/api/health`.
-- Executer `npm run lint`.
-- Executer `npm run build`.
+```text
+Developpeur No Code
+```

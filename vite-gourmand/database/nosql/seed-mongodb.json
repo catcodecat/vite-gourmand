@@ -1,0 +1,69 @@
+{
+  "database": "vite_gourmand",
+  "collections": {
+    "statistics": [
+      {
+        "label": "commandes",
+        "value": 1,
+        "period": "global",
+        "createdAt": "2026-05-16T00:00:00.000Z",
+        "updatedAt": "2026-05-16T00:00:00.000Z"
+      },
+      {
+        "label": "menus_actifs",
+        "value": 6,
+        "period": "global",
+        "createdAt": "2026-05-16T00:00:00.000Z",
+        "updatedAt": "2026-05-16T00:00:00.000Z"
+      },
+      {
+        "label": "avis_valides",
+        "value": 2,
+        "period": "global",
+        "createdAt": "2026-05-16T00:00:00.000Z",
+        "updatedAt": "2026-05-16T00:00:00.000Z"
+      }
+    ],
+    "revenue": [
+      {
+        "month": "2026-05",
+        "amount": 1814.4,
+        "createdAt": "2026-05-16T00:00:00.000Z",
+        "updatedAt": "2026-05-16T00:00:00.000Z"
+      }
+    ],
+    "analytics": [
+      {
+        "metric": "convives",
+        "value": 42,
+        "details": {
+          "source": "orders",
+          "description": "Nombre total de convives sur les commandes non annulees"
+        },
+        "createdAt": "2026-05-16T00:00:00.000Z",
+        "updatedAt": "2026-05-16T00:00:00.000Z"
+      },
+      {
+        "metric": "panier_moyen",
+        "value": 1814.4,
+        "details": {
+          "source": "orders",
+          "description": "Montant moyen des commandes non annulees"
+        },
+        "createdAt": "2026-05-16T00:00:00.000Z",
+        "updatedAt": "2026-05-16T00:00:00.000Z"
+      },
+      {
+        "metric": "taux_avis_valides",
+        "value": 66.67,
+        "details": {
+          "source": "reviews",
+          "unit": "percent",
+          "description": "Part des avis valides dans les avis de demonstration"
+        },
+        "createdAt": "2026-05-16T00:00:00.000Z",
+        "updatedAt": "2026-05-16T00:00:00.000Z"
+      }
+    ]
+  }
+}
